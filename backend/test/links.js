@@ -29,6 +29,7 @@ describe('Links', () => {
           res.body.should.be.a('object')
           res.body.should.have.property('url').eql(url)
           res.body.should.have.property('hash').eql(hash)
+          res.body.should.have.property('managementHash').eql(managementHash)
           done()
         })
     })
@@ -47,8 +48,10 @@ describe('Links', () => {
   describe('/POST link', () => {
     it('should create a new link', (done) => {
 
+      const url = 'http://test.com'
+
       var link = {
-        url: 'http://test.com'
+        url
       }
 
       chai.request(server)
@@ -59,6 +62,7 @@ describe('Links', () => {
           res.body.should.be.a('object')
           res.body.should.have.property('hash')
           res.body.should.have.property('managementHash')
+          res.body.should.have.property('url').eql(url)
           done()
         })
     })
@@ -82,6 +86,7 @@ describe('Links', () => {
           res.body.should.be.a('object')
           res.body.should.have.property('url').eql(newUrl)
           res.body.should.have.property('managementHash').eql(newManagementHash)
+          res.body.should.have.property('hash').eql(hash)
           done()
         })
     })

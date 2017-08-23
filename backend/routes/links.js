@@ -22,10 +22,7 @@ router.get('/:managementHash', function(req, res) {
     res.status(404)
     res.json({message: "Not Found"})
   } else {
-    res.json({
-      url: link.url,
-      hash: hash
-    })
+    res.json(link)
   }
 })
 

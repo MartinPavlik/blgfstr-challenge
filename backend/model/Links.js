@@ -23,7 +23,8 @@ function Links() {
   var links = {
     '123456': {
       url: 'http://google.com',
-      managementHash: '1234567890'
+      managementHash: '1234567890',
+      hash: '123456'
     }
   }
 
@@ -63,8 +64,9 @@ function Links() {
     }
 
     links[hash] = {
-      url,
-      managementHash
+      hash,
+      managementHash,
+      url
     }
 
     return links[hash]
@@ -84,16 +86,14 @@ function Links() {
     var managementHash = getRandomString(MANAGEMENT_HASH_LENGTH);
 
     var newLink = {
-      url: url,
-      managementHash: managementHash
+      hash: hash,
+      managementHash: managementHash,
+      url: url
     }
 
     links[hash] = newLink;
 
-    return {
-      hash,
-      managementHash
-    }
+    return newLink
   }
 
   return {
